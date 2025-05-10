@@ -92,4 +92,64 @@ body {
   border-radius: 4px;
   box-sizing: border-box;
  }
+/*---------------------------------------------------------*/
+ .form {
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 600px;
+  align-items: flex-start;  
+  box-sizing: border-box;
+ }
 
+ label{
+  text-align: left;
+  width: 100%;
+ }
+body > .form {
+  text-align: start;}
+
+ fieldset {
+  border-radius: 4px;
+  width: 400px;
+  font-size: 24px;
+  box-sizing: border-box;
+}
+
+legend {
+  font-size: 24px;
+}
+
+fieldset label {
+
+  align-items: center;
+  margin-right: 40px;
+  gap: 12px;
+}
+
+input[type="radio"] {
+  transform: scale(1.5);
+}
+input[type="number"] {
+  font-size: 24px;
+  padding: 10px;
+  width: 400px;
+  box-sizing: border-box;
+  display: block;
+  text-align: center;
+}
+
+button[type="submit"] {
+  font-size: 24px;
+  width: 400px;
+  height: 40px;
+  background-color: #eee;
+  border: 1px solid #aaa;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #ddd;
+}
