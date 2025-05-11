@@ -4,6 +4,7 @@ import "flatpickr/dist/flatpickr.min.css";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
+let userSelectedDate = null
 
 flatpickr("#datetime-picker", {
   enableTime: true,
@@ -29,9 +30,6 @@ flatpickr("#datetime-picker", {
         
   },
 });
-
-let userSelectedDate = null
-
 ///////////////////////////////////////////////////////////////////////////
 function convertMs(ms) {
 
@@ -53,26 +51,19 @@ function addLeadingZero(value) {
   return String(value).padStart(2, "0");
 }
 
-
 const startBtn = document.querySelector('button[data-start]');
 startBtn.disabled = true;
 
 startBtn.addEventListener('click', () => {
+    startBtn.disabled = true;
     const intervalId = setInterval(() => {
         const now = new Date();
         const diff = userSelectedDate - now;
         const { days, hours, minutes, seconds } = convertMs(diff);
-        startBtn.disabled = true;
         if (diff <= 0) {
             clearInterval(intervalId);
             return;
-            document.querySelector('[data-days]').textContent = '00';
-            document.querySelector('[data-hours]').textContent = '00';
-            document.querySelector('[data-minutes]').textContent = '00';
-            document.querySelector('[data-seconds]').textContent = '00';
         }          
-
-
         document.querySelector('[data-days]').textContent = addLeadingZero(days);
         document.querySelector('[data-hours]').textContent = addLeadingZero(hours);
         document.querySelector('[data-minutes]').textContent = addLeadingZero(minutes);
@@ -80,12 +71,4 @@ startBtn.addEventListener('click', () => {
     }
         , 1000);
 
-    
 }) 
-
-//////////////////////////////////////////////////////////////////
-
-iziToast.show({
-    title: 'Error',
-    message: 'Please choose a date in the future'
-});
