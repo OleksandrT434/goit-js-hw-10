@@ -18,7 +18,7 @@ flatpickr("#datetime-picker", {
         if (selectedDate <= currentDate) {
             iziToast.show({
             title: 'Error',
-             message: 'Please choose a date in the future'
+            message: 'Please choose a date in the future'
      });
 
             startBtn.disabled = true;
