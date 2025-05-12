@@ -6,6 +6,8 @@ import "izitoast/dist/css/iziToast.min.css";
 
 let userSelectedDate = null
 
+const inputSet = document.querySelector('#datetime-picker');
+
 flatpickr("#datetime-picker", {
   enableTime: true,
   time_24hr: true,
@@ -23,8 +25,8 @@ flatpickr("#datetime-picker", {
 
             startBtn.disabled = true;
         } else {
-            startBtn.disabled = false;
-            userSelectedDate = selectedDate;
+          startBtn.disabled = false;
+          userSelectedDate = selectedDate;
         }
         
         
@@ -55,12 +57,15 @@ const startBtn = document.querySelector('button[data-start]');
 startBtn.disabled = true;
 
 startBtn.addEventListener('click', () => {
-    startBtn.disabled = true;
+  startBtn.disabled = true;
+  inputSet.disabled = true;
+  
     const intervalId = setInterval(() => {
         const now = new Date();
         const diff = userSelectedDate - now;
         const { days, hours, minutes, seconds } = convertMs(diff);
-        if (diff <= 0) {
+      if (diff <= 0) {
+            inputSet.disabled = false;
             clearInterval(intervalId);
             return;
         }          
